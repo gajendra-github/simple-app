@@ -20,6 +20,12 @@ app.get('/', (req, res) => {
 
             const db = client.db(db_name);
 
+            //get the reference to the collection
+            //const collection = db.collection('sessions');
+
+            //drop the collection
+            //await collection.drop();
+
             const response = await db.collection('sessions').insertMany(
                 [
                     {
