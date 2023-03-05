@@ -1,15 +1,14 @@
 const express = require('express');
 require('dotenv').config();
 const { MongoClient } = require('mongodb');
+const path = require('path');
+
 
 const app = express();
 const port = process.env.PORT || 3000;
-
 const url = process.env.MONGODB_URL;
 
 const db_name = "simple-db";
-
-
 
 app.get('/', (req, res) => {
     (async function mongo() {
@@ -41,8 +40,9 @@ app.get('/', (req, res) => {
             // Query the collection using the inserted _id values
             const insertedDocs = await db.collection('sessions').find({ _id: { $in: Object.values(insertedIds) } }).toArray();
 
+            res.sendFile(path.join('index.html'));
 
-            res.json(insertedDocs);
+            //res.json(insertedDocs);
             //res.json(response);
 
         } catch (error) {
@@ -55,4 +55,3 @@ app.get('/', (req, res) => {
 app.listen(port, () => {
     console.log(`listening to port ${port}`);
 });
-
