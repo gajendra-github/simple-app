@@ -28,7 +28,16 @@ app.get('/', (req, res) => {
                     }
                 ]
             );
-            res.json(response);
+
+
+            const insertedIds = response.insertedIds;
+
+            // Query the collection using the inserted _id values
+            const insertedDocs = await db.collection('sessions').find({ _id: { $in: Object.values(insertedIds) } }).toArray();
+
+
+            res.json(insertedDocs);
+            //res.json(response);
 
         } catch (error) {
             console.log(error);
