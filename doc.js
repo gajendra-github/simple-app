@@ -5,3 +5,8 @@ the environment variables defined in the .env file into this object, can be acce
 them using process.env
 */
 
+/*
+res.send        -   to send back string
+res.render      -   to render page from template engine (ejs)
+res.json        -   send back the response to browser page
+*/
