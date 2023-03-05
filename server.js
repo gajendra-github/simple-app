@@ -40,7 +40,7 @@ app.get('/', (req, res) => {
             // Query the collection using the inserted _id values
             const insertedDocs = await db.collection('sessions').find({ _id: { $in: Object.values(insertedIds) } }).toArray();
 
-            res.sendFile(path.join('index.html'));
+            res.sendFile(path.join('/index.html'));
 
             //res.json(insertedDocs);
             //res.json(response);
