@@ -17,7 +17,14 @@ const db_name = "simple-db";
 
         const db = client.db(db_name);
 
-        const response = await db.collection('sessions').insertMany({ "id": "1" });
+        const response = await db.collection('sessions').insertMany(
+            [
+                {
+                    "id": 84473,
+                    "title": "Secure Programming for the Enterprise"
+                }
+            ]
+        );
         res.json(response);
 
     } catch (error) {
